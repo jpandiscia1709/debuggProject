@@ -6,9 +6,9 @@ import cans
 class SodaMachine:
     def __init__(self):
         self.register = []
+        self.fill_register()
         self.inventory = []
-        self.register = self.fill_register()
-        self.inventory = self.fill_inventory()
+        self.fill_inventory()
 
     def fill_register(self):
         """Method will fill SodaMachine's register with certain amounts of each coin when called."""
