@@ -1,6 +1,7 @@
 from wallet import Wallet
 from backpack import Backpack
 import user_interface
+import coins
 
 
 class Customer:
@@ -65,7 +66,8 @@ class Customer:
 
     def check_backpack(self):
         """Will display the cans contained in purchased_cans list in backpack"""
-        if self.backpack.purchased_cans.length > 0:
+        if len(self.backpack.purchased_cans) > 0:
+
             user_interface.output_text("You have no cans in your backpack")
         else:
             for can in self.backpack.purchased_cans:
