@@ -49,7 +49,7 @@ def display_welcome():
 
 def output_text(text):
     """User input method that will print to console any string passed in as an argument"""
-    print("text")
+    print(text)
 
 
 def clear_console():
@@ -115,7 +115,7 @@ def get_unique_can_names(inventory):
 
 def display_can_cost(selected_can):
     """Displays the name of a can and its price"""
-    print(f'The price of a {selected_can.price} is ${selected_can.price}')
+    print(f'The price of a {selected_can.name} is ${selected_can.price}')
 
 
 def display_payment_value(customer_payment):
@@ -146,11 +146,11 @@ def coin_selection():
 def validate_coin_selection(selection):
     """Validation function that checks if 'selection' arugment is an int 1-5"""
     switcher = {
-        1: (True, "Quarter"),
-        2: (True, "Dime"),
-        3: (True, "Nickel"),
-        4: (True, "Penny"),
-        5: (True, "Done")
+        "Q": (True, "Q"),
+        "D": (True, "D"),
+        "N": (True, "N"),
+        "P": (True, "P"),
+        "5": (True, "5")
     }
     return switcher.get(selection, (False, None))
 

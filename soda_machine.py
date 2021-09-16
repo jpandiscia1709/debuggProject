@@ -37,16 +37,15 @@ class SodaMachine:
             self.run_transaction(customer)
 
     def run_transaction(self, customer):
-
         selected_soda_name = user_interface.soda_selection(self.inventory)
 
         selected_soda = self.get_inventory_soda(selected_soda_name)
 
         customer_payment = customer.gather_coins_from_wallet(
-            selected_soda_name)
+            selected_soda)
 
         self.calculate_transaction(
-            customer_payment, selected_soda_name, customer)
+            customer_payment, selected_soda, customer)
 
         user_interface.output_text("Transaction complete")
 
@@ -58,7 +57,7 @@ class SodaMachine:
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
                 user_interface.output_text(
-                    'Dispensing ${total_payment_value} back to customer')
+                    f'Dispensing ${total_payment_value} back to customer')
                 customer.add_coins_to_wallet(customer_payment)
                 self.return_inventory(selected_soda)
             else:
@@ -131,9 +130,10 @@ class SodaMachine:
     def get_inventory_soda(self, selected_soda_name):
         """Returns the first instance of a can whose name matches the selected_soda_name parameter"""
         for can in self.inventory:
-            if can == selected_soda_name:
+            if can.name == selected_soda_name:
+                soda = self.inventory[self.inventory.index(can)]
                 self.inventory.remove(can)
-                return can
+                return soda
         return None
 
     def return_inventory(self, chosen_soda):
